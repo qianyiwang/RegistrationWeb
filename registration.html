@@ -14,14 +14,14 @@
   		<main>
   			<h2>User Information</h2>
 			<form action="scripts/registration.php" method="get">
-			  UMID: <input type="text" id="umid" required><br>
+			  UMID: <input type="text" name="umid" required><br>
 			  First Name: <input type="text" name="fname" required><br>
 			  Last Name: <input type="text" name="lname" required><br>
 			  Project Title: <input type="text" name="projtitle" required><br>
 			  Email: <input type="text" name="email" required><br>
 			  Phone#: <input type="text" name="phone" required><br>
 			  <h2>Time Slots</h2>
-			  <select id="slotSelectMenu">
+			  <select id="slotSelectMenu" name="select">
 				  <!-- <option id="slot1">12/9/15, 6:00 PM – 7:00 PM, 6 seat s remaining</option>
 				  <option id="slot2">12/9/15, 7:00 PM – 8:00 PM, 5 seat s remaining</option>
 				  <option id="slot3">12/9/15, 8:00 PM – 9:00 PM, 3 seat s remaining</option>

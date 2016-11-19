@@ -18,37 +18,43 @@ function initial() {
             for(var i = 0; i<6; i++){
                 switch(i){
                     case 0:
-                        output += "<option>";
+                        output += "<option ";
+                        output += "value="+i+">";
                         output += "12/9/15, 6:00 PM – 7:00 PM, ";
                         output += 6-studentNumArr[i];
                         output += "</option>";
                         break;
                     case 1:
-                        output += "<option>";
+                        output += "<option ";
+                        output += "value="+i+">";
                         output += "12/9/15, 7:00 PM – 8:00 PM, ";
                         output += 6-studentNumArr[i];
                         output += "</option>";
                         break;
                     case 2:
-                        output += "<option>";
+                        output += "<option ";
+                        output += "value="+i+">";
                         output += "12/9/15, 8:00 PM – 9:00 PM, ";
                         output += 6-studentNumArr[i];
                         output += "</option>";
                         break;
                     case 3:
-                        output += "<option>";
+                        output += "<option ";
+                        output += "value="+i+">";
                         output += "12/10/15, 6:00 PM – 7:00 PM, ";
                         output += 6-studentNumArr[i];
                         output += "</option>";
                         break;
                     case 4:
-                        output += "<option>";
+                        output += "<option ";
+                        output += "value="+i+">";
                         output += "12/10/15, 7:00 PM – 8:00 PM, ";
                         output += 6-studentNumArr[i];
                         output += "</option>";
                         break;
                     case 5:
-                        output += "<option>";
+                        output += "<option ";
+                        output += "value="+i+">";
                         output += "12/10/15, 8:00 PM – 9:00 PM, ";
                         output += 6-studentNumArr[i];
                         output += "</option>";

@@ -5,8 +5,43 @@ $lname = $_GET["lname"];
 $projtitle = $_GET["projtitle"];
 $email = $_GET["email"];
 $phone = $_GET["phone"];
+$select = $_GET["select"];
 
-echo "Welcome" . $lname . ". Your project title is: " . $projtitle;
+// initial db, select table
+$mysql_server_name="198.71.225.61"; 
+$mysql_username="qianyiw"; 
+$mysql_password="123456789"; 
+$mysql_database="RegisterDB"; 
+$con=mysql_connect($mysql_server_name, $mysql_username,
+                                $mysql_password);
+
+mysql_select_db("RegisterDB",$con);
+$result = mysql_query("SELECT * FROM TimeSlotInfo");
+$idx = 0;
+while ($row = mysql_fetch_array($result))
+{
+	if($idx == $select){
+		$studentIdx = $row["studentnum"]+1;
+		if($row["studentnum"]==0){
+			$totalFirstName = $row["fname"] . $fname;
+			$totalLastName = $row["lname"] . $lname;
+			$totalUmid = $row["umid"] . $umid;
+			$totalEmail = $row["email"] . $email;
+			$totalPhone = $row["phone"] . $phone;
+		}
+		else{
+			$totalFirstName = $row["fname"] . "," . $fname;
+			$totalLastName = $row["lname"] . "," . $lname;
+			$totalUmid = $row["umid"] . "," . $umid;
+			$totalEmail = $row["email"] . "," . $email;
+			$totalPhone = $row["phone"] . "," .$phone;
+		}
+	}  
+	$idx++;
+}
+
+echo $studentIdx . $totalFirstName . $totalLastName . $totalUmid . $totalEmail . $totalPhone;
+
 ?>
 
 <<html>
