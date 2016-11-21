@@ -8,16 +8,23 @@ $con=mysql_connect($mysql_server_name, $mysql_username,
                                 $mysql_password);
 
 mysql_select_db("RegisterDB",$con);
-$result = mysql_query("SELECT * FROM TimeSlotInfo");
 
+$result = mysql_query("SELECT * FROM TimeSlot");
 $j=0;
+$i=0;
+$repeatRowIdx = 0;
 while ($row = mysql_fetch_array($result))
 {
     $studentnum[$j] = $row["studentnum"];
+    if($row["umid"]!=null){
+    	$oldUmid[$i] = $row["umid"];
+    	$i++;
+    }
     $j++;
-    
 }
-$data=array("studentnum"=>$studentnum);
+
+
+$data=array("studentnum"=>$studentnum, "umid"=>$oldUmid);
 mysql_close($con);
 echo json_encode($data);
 ?>

@@ -5,7 +5,7 @@ $lname = $_GET["lname"];
 $projtitle = $_GET["projtitle"];
 $email = $_GET["email"];
 $phone = $_GET["phone"];
-$select = $_GET["select"];
+$select = $_GET["select"]+1;
 
 // initial db, select table
 $mysql_server_name="198.71.225.61"; 
@@ -16,31 +16,59 @@ $con=mysql_connect($mysql_server_name, $mysql_username,
                                 $mysql_password);
 
 mysql_select_db("RegisterDB",$con);
-$result = mysql_query("SELECT * FROM TimeSlotInfo");
-$idx = 0;
-while ($row = mysql_fetch_array($result))
-{
-	if($idx == $select){
-		$studentIdx = $row["studentnum"]+1;
-		if($row["studentnum"]==0){
-			$totalFirstName = $row["fname"] . $fname;
-			$totalLastName = $row["lname"] . $lname;
-			$totalUmid = $row["umid"] . $umid;
-			$totalEmail = $row["email"] . $email;
-			$totalPhone = $row["phone"] . $phone;
-		}
-		else{
-			$totalFirstName = $row["fname"] . "," . $fname;
-			$totalLastName = $row["lname"] . "," . $lname;
-			$totalUmid = $row["umid"] . "," . $umid;
-			$totalEmail = $row["email"] . "," . $email;
-			$totalPhone = $row["phone"] . "," .$phone;
-		}
-	}  
-	$idx++;
+
+// insert into row
+fetchRowAndUpdate($select);
+// else{
+// 	echo "<script type='text/javascript'> 
+// 	answer = confirm('You have already registered, do you want to update?'); 
+// 	</script>";
+// 	// fetchRowAndUpdate($select);
+// }
+
+mysql_close($con);
+
+function removePrev(){
+
 }
 
-echo $studentIdx . $totalFirstName . $totalLastName . $totalUmid . $totalEmail . $totalPhone;
+function fetchRowAndUpdate($select){
+	$result = mysql_query("SELECT * FROM TimeSlot");
+	echo $select;
+	while($row = mysql_fetch_array( $result))
+	{
+		if($row['id'] == $select)
+		{
+	    	$studentnum = $row['studentnum'];
+
+			if($row["studentnum"]==0){
+				$studentnum++;
+				$totalFirstName = $row["fname"] . $GLOBALS['fname'];
+				$totalLastName = $row["lname"] . $GLOBALS['lname'];
+				$totalUmid = $row["umid"] . $GLOBALS['umid'];
+				$totalEmail = $row["email"] . $GLOBALS['email'];
+				$totalPhone = $row["phone"] . $GLOBALS['phone'];
+				$totalProj = $row["project name"] . $GLOBALS['projtitle'];
+
+			}
+			else{
+				$studentnum++;
+				$totalFirstName = $row["fname"] . "," . $GLOBALS['fname'];
+				$totalLastName = $row["lname"] . "," . $GLOBALS['lname'];
+				$totalUmid = $row["umid"] . "," . $GLOBALS['umid'];
+				$totalEmail = $row["email"] . "," . $GLOBALS['email'];
+				$totalPhone = $row["phone"] . "," .$GLOBALS['phone'];
+				$totalProj = $row["project name"] . "," . $GLOBALS['projtitle'];
+			}
+		    break;
+		}
+	}
+
+	mysql_query("UPDATE `TimeSlot` SET `studentnum` = '$studentnum', `umid` = '$totalUmid', `fname` = '$totalFirstName', 
+	`lname` = '$totalLastName', `project name` = '$totalProj', `email` = '$totalEmail', `phone` = '$totalPhone' 
+	WHERE id = '$select' ");
+}
+
 
 ?>
 
@@ -51,11 +79,14 @@ echo $studentIdx . $totalFirstName . $totalLastName . $totalUmid . $totalEmail .
 
 <body>
 	<header>
-		<h1>Student information in your time slot</h1>
+		<h1><?php echo $fname ?>, please view your registration information.</h1>
 	</header>
 		
 	<main>
-		<h2>Student's name: <?php echo $lname . $fname; ?>, student's email: <?php echo $email ?></h2>
+		<h2><?php echo $fname ?>'s information: </h2>
+		
+
+		<h2>These students are also in your time slot: </h2>
 		
 	</main>
 	<footer>

@@ -13,8 +13,8 @@
   		
   		<main>
   			<h2>User Information</h2>
-			<form action="scripts/registration.php" method="get">
-			  UMID: <input type="text" name="umid" required><br>
+			<form action="scripts/registration.php" method="get" onsubmit="return checkform()">
+			  UMID: <input type="text" name="umid" id="umid" required><br>
 			  First Name: <input type="text" name="fname" required><br>
 			  Last Name: <input type="text" name="lname" required><br>
 			  Project Title: <input type="text" name="projtitle" required><br>
