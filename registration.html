@@ -4,24 +4,32 @@
 	  	<meta charset="utf-8">
 	  	<title>Steudent Register</title>
 	  	<script src="scripts/registration.js"></script>
+			<link rel="stylesheet" href="styles/registration.css">
   	</head>
   	<body>
   		<header>
-        	<h1>Student Registration Form</h1>
+      	<h1>Student Registration Form</h1>
   			<p>Please fill in all fields and click register.</p>
     	</header>
-  		
+
   		<main>
   			<h2>User Information</h2>
 			<form action="scripts/registration.php" method="get" onsubmit="return checkform()">
-			  UMID: <input type="text" name="umid" id="umid" required><br>
-			  First Name: <input type="text" name="fname" required><br>
-			  Last Name: <input type="text" name="lname" required><br>
-			  Project Title: <input type="text" name="projtitle" required><br>
-			  Email: <input type="text" name="email" required><br>
-			  Phone#: <input type="text" name="phone" required><br>
-			  <h2>Time Slots</h2>
-			  <select id="slotSelectMenu" name="select">
+			  UMID: <input type="text" id="umid" class="normal" name="umid" placeholder="8 digits" required>
+				<span id="umid_error_message" class="error_message"></span><br>
+			  First Name: <input type="text" id="fname" class="normal" name="fname" placeholder="First name" required>
+				<span id="fname_error_message" class="error_message"></span><br>
+			  Last Name: <input type="text" id="lname" class="normal" name="lname" placeholder="Last name" required>
+				<span id="lname_error_message" class="error_message"></span><br>
+			  Project Title: <input type="text" id="pname" class="normal" name="projtitle" required>
+				<span id="pname_error_message" class="error_message"></span><br>
+			  Email: <input type="email" name="email" id="email" class="normal" placeholder="example@domain.com" required>
+				<span id="email_error_message" class="error_message"></span><br>
+			  Phone#: <input type="tel" placeholder="999-999-9999"
+				name="phone" id="phone" class="normal" required>
+				<span id="phone_error_message" class="error_message"></span><br>
+
+			  Time Slots Selection: <select id="slotSelectMenu" name="select">
 				  <!-- <option id="slot1">12/9/15, 6:00 PM – 7:00 PM, 6 seat s remaining</option>
 				  <option id="slot2">12/9/15, 7:00 PM – 8:00 PM, 5 seat s remaining</option>
 				  <option id="slot3">12/9/15, 8:00 PM – 9:00 PM, 3 seat s remaining</option>
@@ -31,7 +39,6 @@
 			  </select>
 			  <input type="submit" value="Submit">
 			</form>
-			<p id="result">result<p>
   		</main>
   		<footer>
         <p>&#169 2016 Qianyi Wang</p>

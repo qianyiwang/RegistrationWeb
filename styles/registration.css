@@ -1,0 +1,68 @@
+body{
+  width: 80em;
+  height: 200em;
+  margin: 0 auto;
+}
+
+header{
+  height: 5em;
+  color: #FFCC33;
+
+  background: #003366
+}
+
+header h1{
+  text-align: center;
+  margin: 0;
+}
+
+header p{
+  text-align: center;;
+  margin: 0;
+}
+
+main{
+  background: #DCDCDC;
+}
+
+main form{
+  margin-top: 1em;
+  margin-left: 25em;
+}
+
+main h2{
+  text-align: left;
+  margin: 0;
+}
+
+footer{
+  text-align: center;
+  background: #003366
+}
+
+footer p{
+  margin: 0;
+  color: #FFFFFF;
+}
+
+input
+{
+  margin-top: 1em;
+}
+
+.normal{
+  color: #888;
+}
+.error_highlight{
+  color: #ff0000;
+  border-style: solid;
+  border-color: red;
+}
+.error_message{
+  color: #ff0000;
+  font-size: small;
+}
+
+select{
+  margin-top: 1em;
+}
